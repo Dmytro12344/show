@@ -17,9 +17,15 @@ class ProductType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name', TextType::class)
-            ->add('price', TextType::class)
-            ->add('description', TextType::class)
+        $builder->add('name', TextType::class,
+            ['attr' => ['placeholder' => 'Name', 'class' => 'form-control']])
+
+            ->add('price', TextType::class,
+                ['attr' => ['placeholder' => 'Price', 'class' => 'form-control']])
+
+            ->add('description', TextType::class,
+                ['attr' => ['placeholder' => 'Description', 'class' => 'form-control']])
+
             ->add('category', EntityType::class, [
                 'class' => 'AppBundle:ProductCategory',
                 'query_builder' => function (EntityRepository $er) {
@@ -27,9 +33,10 @@ class ProductType extends AbstractType
                         ->orderBy('c.name', 'DESC');
                 },
                 'choice_label' => 'name',
-                'placeholder' => 'Choose an option',
+                'placeholder' => 'Choose a category',
+                'attr' => ['class' => 'form-control']
                 ])
-            ->add('save', SubmitType::class, ['label' => 'Submit', 'attr' => ['class' => 'Submit']])
+            ->add('save', SubmitType::class, ['label' => 'Submit', 'attr' => ['class' => 'btn btn-primary']])
         ->getForm();
 
 

@@ -4,6 +4,7 @@
 namespace AppBundle\Controller;
 
 
+use AppBundle\Entity\Product;
 use AppBundle\Entity\ProductCategory;
 use AppBundle\Form\ProductCategoryType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -65,6 +66,26 @@ class ProductCategoryController extends Controller
         }
 
         return $this->render('create_category.html.twig', ['form' => $form->createView()]);
+    }
 
+    /**
+     * @Route("/delete/{id}", name="delete_category")
+     */
+    public function deleteAction($id)
+    {
+        try {
+            $category = $this->getDoctrine()
+                ->getRepository(ProductCategory::class)
+                ->find($id);
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($category);
+            $entityManager->flush();
+            $this->addFlash('success', 'Category was deleted');
+        }
+        catch (\Exception $e)
+        {
+            $this->addFlash('error', 'Current category does not found');
+        }
+        return $this->redirectToRoute('show_category');
     }
 }

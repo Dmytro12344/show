@@ -16,8 +16,14 @@ class ProductCategoryType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name', TextType::class)
-                ->add('save', SubmitType::class, ['label' => 'Submit', 'attr' => ['class' => 'Submit']])
+        $builder->add('name', TextType::class,
+                    [
+                        'attr' => [
+                            'class' => 'form-control',
+                            'placeholder' => 'Name'
+                        ]
+                    ])
+                ->add('save', SubmitType::class, ['label' => 'Submit', 'attr' => ['class' => 'btn btn-primary']])
                 ->getForm();
 
 

@@ -27,7 +27,7 @@ class ProductCategory
     protected $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="Product", mappedBy="category")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Product", mappedBy="category")
      */
     protected $product;
 

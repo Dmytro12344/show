@@ -1,5 +1,19 @@
+{% extends 'home.html.twig' %}
+
+{% block body %}
+    <div class="container-fluid mt-5">
 {{ form_start(form) }}
-{{ form_widget(form) }}
+    <div class="row">
+        <div class="col-md-5">
+            {{ form_widget(form.name)}}
+        </div>
+
+        <div class="col-md-3">
+            {{ form_widget(form.save)}}
+        </div>
+    </div>
 {{ form_end(form) }}
 
-<a href="{{ path('show_category') }}">Back</a>
+<a href="{{ path('show_category') }}" class="btn btn-success mt-3">back to category</a>
+    </div>
+{% endblock %}

@@ -1,5 +1,44 @@
-{{ form_start(form) }}
-{{ form_widget(form) }}
-{{ form_end(form) }}
+{% extends 'home.html.twig' %}
+{% block body %}
 
-<a href="{{ path('show_products') }}">To Categories</a>
+
+    {% for message in app.flashes('error') %}
+        <div class="flash-notice">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <div class="container-fluid mt-5">
+
+        {{ form_start(form) }}
+        {{ form_errors(form) }}
+            <div class="row">
+                <div class="col-md-3">
+                    {{ form_widget(form.name)}}
+                </div>
+
+                <div class="col-md-2">
+                    {{ form_widget(form.price)}}
+                </div>
+
+                <div class="col-md-7">
+                    {{ form_widget(form.description)}}
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-md-8">
+                    {{ form_widget(form.category)}}
+                </div>
+
+                <div class="col-md-4">
+                    {{ form_widget(form.save)}}
+                </div>
+            </div>
+        {{ form_end(form) }}
+
+    <a href="{{ path('show_products') }}" class="btn btn-success mt-4">back to Products</a>
+
+    </div>
+
+{% endblock %}

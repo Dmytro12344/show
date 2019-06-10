@@ -5,6 +5,8 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\Collection;
+
 
 
 /**
@@ -38,21 +40,21 @@ class Product
     private $description;
 
     /**
-     * @ORM\ManyToOne(targetEntity="ProductCategory", inversedBy="product")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\ProductCategory", inversedBy="product")
      * @ORM\JoinColumn(nullable=true)
      */
     private $category;
 
-
+    /**
+     * @return Collection|ProductCategory[]
+     */
     public function getCategory()
     {
         return $this->category;
     }
 
-    /**
-     * @param mixed $category
-     */
-    public function setCategory(ProductCategory $category)
+
+    public function setCategory(ProductCategory $category) : void
     {
         $this->category = $category;
     }

@@ -18,16 +18,8 @@ class HomeController extends Controller
         $name = 'Dmytro';
         $title = 'Hello World';
 
-        return $this->render('show.html.twig', ['name' => $name, 'title' => $title]);
+        return $this->render('home.html.twig', ['name' => $name, 'title' => $title]);
     }
 
-
-    /**
-     * @Route("/blog/{page}", name="blog_list", requirements={"page"="\d+"})
-     */
-    public function listAction($page = 1)
-    {
-        return $this->render('blog_page.html.twig', ['page' => $page]);
-    }
 
 }

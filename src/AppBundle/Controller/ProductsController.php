@@ -3,12 +3,12 @@
 
 namespace AppBundle\Controller;
 
-
 use AppBundle\Form\ProductType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use AppBundle\Entity\Product;
+use Symfony\Component\Form\FormError;
 
 
 /**
@@ -26,6 +26,7 @@ class ProductsController extends Controller
                         ->getRepository(Product::class)
                         ->findAll();
 
+
         if(!$product)
         {
             throw $this->createNotFoundException(
@@ -38,23 +39,11 @@ class ProductsController extends Controller
     /**
      * @Route("/create/{id}", name="create_product", defaults={"id": null}, requirements={"id"="\d+"})
      */
-    public function createAction(Request $request, $id)
+    public function createAction(Request $request)
     {
-        if($id !== null)
-        {
-            $product = $this->getDoctrine()
-                            ->getRepository(Product::class)
-                            ->find($id);
-            if(!$product)
-            {
-                throw $this->createNotFoundException('The product does not exist');
-            }
+        $product = new Product();
+        $form = $this->createForm(ProductType::class, $product);
 
-            $form = $this->createForm(ProductType::class, $product);
-        } else {
-            $product = new Product();
-            $form = $this->createForm(ProductType::class, $product);
-        }
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -66,6 +55,55 @@ class ProductsController extends Controller
         }
 
         return $this->render('create_product.html.twig', ['form' => $form->createView()]);
+    }
 
+    /**
+     * @Route("/edit/{id}", name="edit_product")
+     */
+    public function updateAction($id)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $product = $entityManager->getRepository(Product::class)->find($id);
+        $form = $this->createForm(ProductType::class, $product);
+
+        if($product === null)
+        {
+            $this->addFlash('error', 'Indefinite product.');
+            return $this->redirectToRoute('show_products');
+        }
+        try{
+        if($form->isSubmitted() && $form->isValid()) {
+            $entityManager->persist($product);
+            $entityManager->flush();
+            $this->addFlash('success', 'Product was updates');
+            return $this->redirectToRoute('show_products');
+        }
+        } catch(\Exception $e)
+        {
+            $form->addError(new FormError($e->getMessage()));
+        }
+        return $this->render('create_product.html.twig', ['form' => $form->createView()]);
+    }
+
+
+    /**
+     * @Route("/delete/{id}", name="delete_product")
+     */
+    public function deleteAction($id)
+    {
+        try {
+            $product = $this->getDoctrine()
+                ->getRepository(Product::class)
+                ->find($id);
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($product);
+            $entityManager->flush();
+            $this->addFlash('success', 'Product was deleted');
+        }
+        catch (\Exception $e)
+        {
+            $this->addFlash('error', 'Current product does not found');
+        }
+        return $this->redirectToRoute('show_products');
     }
 }

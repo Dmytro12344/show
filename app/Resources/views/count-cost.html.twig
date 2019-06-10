@@ -1,0 +1,26 @@
+{% extends 'home.html.twig' %}
+
+{% block body %}
+    <div class="container mt-5">
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>Name</th>
+            <th>Product's count</th>
+            <th>Count prise</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        {% for item in result %}
+            <tr>
+                <td>{{ item.category_name }}</td>
+                <td>{{ item.count_id }}</td>
+                <td>{{ item.count_price }}</td>
+            </tr>
+        {% endfor %}
+
+    </tbody>
+</table>
+    </div>
+{% endblock %}
