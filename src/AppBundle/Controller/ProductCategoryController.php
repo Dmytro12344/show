@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\ProductCategory;
 use AppBundle\Form\ProductCategoryType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -33,7 +34,7 @@ class ProductCategoryController extends Controller
     }
 
     /**
-     * @Route("/create/{id}", name="create_category", defaults={"id": null}, requirements={"id"="\d+"})
+     * @Route("/create", name="create_category")
      */
     public function createAction(Request $request)
     {
@@ -56,11 +57,8 @@ class ProductCategoryController extends Controller
     /**
      * @Route("/edit/{id}", name="edit_category")
      */
-    public function updateAction(Request $request, $id)
+    public function updateAction(Request $request, ProductCategory $category)
     {
-        $category = $this->getDoctrine()
-            ->getRepository(ProductCategory::class)
-            ->find($id);
         $form = $this->createForm(ProductCategoryType::class, $category);
         $form->handleRequest($request);
 
@@ -80,21 +78,14 @@ class ProductCategoryController extends Controller
     /**
      * @Route("/delete/{id}", name="delete_category")
      */
-    public function deleteAction($id)
+    public function deleteAction(ProductCategory $category)
     {
-        try {
-            $category = $this->getDoctrine()
-                ->getRepository(ProductCategory::class)
-                ->find($id);
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($category);
-            $entityManager->flush();
-            $this->addFlash('success', 'Category was deleted');
-        }
-        catch (\Exception $e)
-        {
-            $this->addFlash('error', 'Current category does not found');
-        }
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->remove($category);
+        $entityManager->flush();
+        $this->addFlash('success', 'Category was deleted');
+        $this->addFlash('error', 'Current category does not found');
+
         return $this->redirectToRoute('show_category');
     }
 }

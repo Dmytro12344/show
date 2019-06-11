@@ -8,40 +8,35 @@
         </div>
     {% endfor %}
 
-    {% if not form.vars.valid %}
-    <div class="errors">
-        {{ form_errors(form.name) }}
-        {{ form_errors(form.price) }}
-        {{ form_errors(form.description) }}
-        {{ form_errors(form.category) }}
-    </div>
-    {% endif %}
 
     <div class="container-fluid mt-5">
 
         {{ form_start(form) }}
-        {{ form_errors(form) }}
             <div class="row justify-content-center align-items-center">
                 <div class="col-6">
                     <div class="">
                         {{ form_label(form.name) }}
                         {{ form_widget(form.name)}}
+			{{ form_errors(form.name) }}
                     </div>
 
                     <div class="mt-4">
                         {{ form_label(form.price) }}
                         {{ form_widget(form.price)}}
+			 {{ form_errors(form.price) }}
                     </div>
 
                     <div class="mt-4">
                         {{ form_label(form.description) }}
                         {{ form_widget(form.description)}}
+			{{ form_errors(form.description) }}       
                     </div>
 
 
                     <div class="mt-4">
                         {{ form_label(form.category) }}
                         {{ form_widget(form.category)}}
+			{{ form_errors(form.category) }}
                     </div>
 
                     <div class="mt-3">

@@ -25,12 +25,6 @@ class ProductsController extends Controller
                         ->getRepository(Product::class)
                         ->findAll();
 
-        if(!$product)
-        {
-           $this->addFlash('error', 'Any products not found');
-           return $this->render('product.html.twig');
-        }
-
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
             $product,
@@ -42,8 +36,7 @@ class ProductsController extends Controller
     }
 
     /**
-     * @Route("/create/{id}", name="create_product", defaults={"id": null}, requirements={"id"="\d+"})
-     * @
+     * @Route("/create", name="create_product", defaults={"id": null}, requirements={"id"="\d+"})
      */
     public function createAction(Request $request)
     {
@@ -66,21 +59,10 @@ class ProductsController extends Controller
     /**
      * @Route("/edit/{id}", name="edit_product")
      */
-    public function updateAction(request $request, $id)
+    public function updateAction(request $request, Product $product)
     {
-        $product = $this->getDoctrine()
-            ->getRepository(Product::class)
-            ->find($id);
-
         $form = $this->createForm(ProductType::class, $product);
         $form->handleRequest($request);
-
-        if($product === null)
-        {
-            $this->addFlash('error', 'Indefinite product.');
-            return $this->redirectToRoute('show_products');
-        }
-
 
         if($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
@@ -96,21 +78,12 @@ class ProductsController extends Controller
     /**
      * @Route("/delete/{id}", name="delete_product")
      */
-    public function deleteAction($id)
+    public function deleteAction(Product $product)
     {
-        try {
-            $product = $this->getDoctrine()
-                ->getRepository(Product::class)
-                ->find($id);
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($product);
-            $entityManager->flush();
-            $this->addFlash('success', 'Product was deleted');
-        }
-        catch (\Exception $e)
-        {
-            $this->addFlash('error', 'Current product does not found');
-        }
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->remove($product);
+        $entityManager->flush();
+        $this->addFlash('success', 'Product was deleted');
         return $this->redirectToRoute('show_products');
     }
 }

@@ -13,3 +13,8 @@ AppBundle\Entity\Product:
 
     category:
     - NotBlank: { message: 'Field category must be required.'}
+
+AppBundle\Entity\ProductCategory:
+  properties:
+    name:
+      - NotBlank: { message: 'Field name must be required.'}
