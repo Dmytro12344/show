@@ -60,27 +60,28 @@ class ProductsController extends Controller
     /**
      * @Route("/edit/{id}", name="edit_product")
      */
-    public function updateAction($id)
+    public function updateAction(request $request, $id)
     {
-        $entityManager = $this->getDoctrine()->getManager();
-        $product = $entityManager->getRepository(Product::class)->find($id);
+        $product = $this->getDoctrine()
+            ->getRepository(Product::class)
+            ->find($id);
+
         $form = $this->createForm(ProductType::class, $product);
+        $form->handleRequest($request);
 
         if($product === null)
         {
             $this->addFlash('error', 'Indefinite product.');
             return $this->redirectToRoute('show_products');
         }
-        try{
+
+
         if($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($product);
             $entityManager->flush();
             $this->addFlash('success', 'Product was updates');
             return $this->redirectToRoute('show_products');
-        }
-        } catch(\Exception $e)
-        {
-            $form->addError(new FormError($e->getMessage()));
         }
         return $this->render('create_product.html.twig', ['form' => $form->createView()]);
     }

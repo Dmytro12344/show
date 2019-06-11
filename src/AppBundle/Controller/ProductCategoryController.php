@@ -37,23 +37,10 @@ class ProductCategoryController extends Controller
     /**
      * @Route("/create/{id}", name="create_category", defaults={"id": null}, requirements={"id"="\d+"})
      */
-    public function createAction(Request $request, $id)
+    public function createAction(Request $request)
     {
-        if($id !== null)
-        {
-            $category = $this->getDoctrine()
-                ->getRepository(ProductCategory::class)
-                ->find($id);
-            if(!$category)
-            {
-                throw $this->createNotFoundException('The category does not exist');
-            }
-            $form = $this->createForm(ProductCategoryType::class, $category);
-        }
-        else {
-            $category = new ProductCategory();
-            $form = $this->createForm(ProductCategoryType::class, $category);
-        }
+        $category = new ProductCategory();
+        $form = $this->createForm(ProductCategoryType::class, $category);
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid())
@@ -66,6 +53,30 @@ class ProductCategoryController extends Controller
         }
 
         return $this->render('create_category.html.twig', ['form' => $form->createView()]);
+    }
+
+    /**
+     * @Route("/edit/{id}", name="edit_category")
+     */
+    public function updateAction(Request $request, $id)
+    {
+        $category = $this->getDoctrine()
+            ->getRepository(ProductCategory::class)
+            ->find($id);
+        $form = $this->createForm(ProductCategoryType::class, $category);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid())
+        {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($category);
+            $entityManager->flush();
+            $this->addFlash('success', 'Product was updated');
+            return $this->redirectToRoute('show_category');
+        }
+
+        return $this->render('create_category.html.twig', ['form' => $form->createView()]);
+
     }
 
     /**

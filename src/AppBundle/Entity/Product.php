@@ -9,6 +9,7 @@ use Doctrine\Common\Collections\Collection;
 
 
 
+
 /**
  * @ORM\Entity
  * @ORM\Table(name="product")
@@ -30,18 +31,22 @@ class Product
 
     /**
      * @ORM\Column(type="decimal", scale=2)
-     * @Assert\GreaterThan(0)
+     * @Assert\GreaterThan(value="0", message="Field Price must be greater then 0")
+     * @Assert\Type("numeric", message="Field Price must be number")
+     * @Assert\NotBlank(message="Field Price be required")
      */
     private $price;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank(message="Field description be required")
      */
     private $description;
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\ProductCategory", inversedBy="product")
      * @ORM\JoinColumn(nullable=true)
+     * @Assert\NotBlank(message="Field category must be required")
      */
     private $category;
 
