@@ -4,9 +4,10 @@
 namespace AppBundle\Controller;
 
 
+use AppBundle\Entity\Product;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
-use Doctrine\ORM\Query\ResultSetMapping;
+
 
 
 class CountController extends Controller
@@ -16,15 +17,7 @@ class CountController extends Controller
      */
     public function indexAction()
     {
-
-        $em = $this->getDoctrine()->getManager();
-        $query = "SELECT SUM(price) as count_price, COUNT(id) as count_id, (SELECT name FROM product_category WHERE id = p.category_id) as category_name FROM product AS p GROUP BY category_id";
-
-
-        $data = $em->getConnection()->prepare($query);
-        $data->execute();
-        $result = $data->fetchAll();
-
+        $result = $this->getDoctrine()->getRepository(Product::class)->findAllForCount();
         return $this->render('count-cost.html.twig', ['result' => $result]);
     }
 }

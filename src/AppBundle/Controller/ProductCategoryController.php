@@ -3,8 +3,6 @@
 
 namespace AppBundle\Controller;
 
-
-use AppBundle\Entity\Product;
 use AppBundle\Entity\ProductCategory;
 use AppBundle\Form\ProductCategoryType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;

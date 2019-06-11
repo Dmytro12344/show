@@ -8,7 +8,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use AppBundle\Entity\Product;
-use Symfony\Component\Form\FormError;
 
 
 /**
@@ -20,24 +19,31 @@ class ProductsController extends Controller
     /**
      * @Route("/", name="show_products")
      */
-    public function showAction()
+    public function showAction(Request $request)
     {
         $product = $this->getDoctrine()
                         ->getRepository(Product::class)
                         ->findAll();
 
-
         if(!$product)
         {
-            throw $this->createNotFoundException(
-                'No product found'
-            );
+           $this->addFlash('error', 'Any products not found');
+           return $this->render('product.html.twig');
         }
-        return $this->render('products.html.twig', ['products' => $product]);
+
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $product,
+            $request->query->getInt('page', 1),
+            5
+        );
+
+        return $this->render('products.html.twig', ['products' => $pagination]);
     }
 
     /**
      * @Route("/create/{id}", name="create_product", defaults={"id": null}, requirements={"id"="\d+"})
+     * @
      */
     public function createAction(Request $request)
     {
