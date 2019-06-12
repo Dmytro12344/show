@@ -1,0 +1,8 @@
+#Form Product
+app.product.name: 'Name'
+app.product.price: 'Price'
+app.product.description: 'Description'
+app.product.categories: 'Categories'
+app.product.save: 'Submit'
+app.product.chose_cat: 'Choose a category'
+

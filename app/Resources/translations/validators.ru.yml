@@ -1,0 +1,7 @@
+#Assert Product
+app.product.name.not_blank: 'Поле Имя обязательно к заполнению.'
+app.product.price.notblank: 'Поле Цена обязательно к заполнению.'
+app.product.price.greater_null: 'Поле Цена должно быть больше 0.'
+app.product.price.type_numeric: 'Поле Цена должно быть числом.'
+app.product.category.not_blank: 'Поле Категория обязательно к заполнению.'
+app.product.description.not_blank: 'Поле Описание обязательно к заполнению.'

@@ -1,0 +1,7 @@
+#Assert Product
+app.product.name.notblank: 'Field Name must be required.'
+app.product.price.notblank: 'Field Price must be required.'
+app.product.price.greater_null: 'Field Price must be greater than 0.'
+app.product.price.type_numeric: 'Field Price must be number.'
+app.product.category.notblank: 'Field Category must be required.'
+app.product.description.notblank: 'Field Description must be required.'

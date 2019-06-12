@@ -1,0 +1,7 @@
+#Form Product
+app.product.name: 'Название'
+app.product.price: 'Цена'
+app.product.description: 'Описание'
+app.product.categories: 'Категория'
+app.product.save: 'Отправить'
+app.product.chose_cat: 'Выберите категорию'

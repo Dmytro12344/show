@@ -2,4 +2,54 @@ app:
     resource: '@AppBundle/Controller/'
     type: annotation
 
+homepage:
+    path: /
+    controller: AppBundle\Controller\HomeController:show
+
+
+#Category
+show_category:
+    path: /categories/
+    controller: AppBundle\Controller\ProductCategoryController:showAction
+
+create_category:
+    path: /categories/create
+    controller: AppBundle\Controller\ProductCategoryController:createAction
+
+edit_category:
+    path: /categories/edit/{id}
+    controller: AppBundle\Controller\ProductCategoryController:updateAction
+
+delete_category:
+    path: /categories/delete/{id}
+    controller: AppBundle\Controller\ProductCategoryController:deleteAction
+
+
+
+#Product
+show_products:
+    path: /products/
+    controller: AppBundle\Controller\ProductsController:showAction
+
+create_product:
+    path: /{_locale}/products/create
+    controller: AppBundle\Controller\ProductsController:createAction
+    requirements:
+        _locale: en|fr|de|ru
+
+edit_products:
+    path: /products/update/{id}
+    controller: AppBundle\Controller\ProductsController:editAction
+
+delete_products:
+    path: /products/delete/{id}
+    controller: AppBundle\Controller\ProductsController:deleteAction
+
+
+
+#Count
+count_cost:
+    path: /count-cost
+    controller: AppBundle\Controller\CountController:indexAction
+
 

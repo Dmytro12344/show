@@ -1,12 +1,16 @@
 AppBundle\Entity\Product:
   properties:
     name:
-    - NotBlank: { message: 'Field name must be required.'}
+    - NotBlank: { message: 'app.product.name.not_blank'}
 
     price:
-    - GreaterThan: 0
-    - Type: numeric
-    - NotBlank: { message: 'Field price must be required.'}
+    - GreaterThan:
+        value: 0
+        message: 'app.product.price.greater_null'
+    - Type:
+        type: numeric
+        message: 'app.product.price.type_numeric'
+    - NotBlank: { message: 'app.product.price.not_blank'}
 
     description:
     - NotBlank: { message: 'Field description must required.'}

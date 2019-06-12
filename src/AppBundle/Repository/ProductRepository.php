@@ -3,7 +3,6 @@
 
 namespace AppBundle\Repository;
 
-use Doctrine\ORM\Query\ResultSetMapping;
 use Doctrine\ORM\EntityRepository;
 
 class ProductRepository extends EntityRepository

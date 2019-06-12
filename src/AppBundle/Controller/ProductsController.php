@@ -10,15 +10,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use AppBundle\Entity\Product;
 
 
-/**
- * @Route("/products")
- */
 class ProductsController extends Controller
 {
-
-    /**
-     * @Route("/", name="show_products")
-     */
     public function showAction(Request $request)
     {
         $product = $this->getDoctrine()
@@ -36,7 +29,7 @@ class ProductsController extends Controller
     }
 
     /**
-     * @Route("/create", name="create_product", defaults={"id": null}, requirements={"id"="\d+"})
+     * @Route("/create", name="create_product")
      */
     public function createAction(Request $request)
     {
@@ -66,7 +59,6 @@ class ProductsController extends Controller
 
         if($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($product);
             $entityManager->flush();
             $this->addFlash('success', 'Product was updates');
             return $this->redirectToRoute('show_products');

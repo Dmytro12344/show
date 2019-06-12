@@ -9,7 +9,6 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints\Regex;
 
 class ProductType extends AbstractType
 {
@@ -19,13 +18,20 @@ class ProductType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('name', TextType::class,
-            ['attr' => ['placeholder' => 'Name', 'class' => 'form-control']])
+
+            ['attr' => ['placeholder' => 'app.product.name', 'class' => 'form-control'],
+                'label' => 'app.product.name',
+            'translation_domain' => 'messages',])
 
             ->add('price', TextType::class,
-                ['attr' => ['placeholder' => 'Price', 'class' => 'form-control']])
+                ['attr' => ['placeholder' => 'app.product.price', 'class' => 'form-control'],
+                    'label' => 'app.product.price',
+                    ])
 
             ->add('description', TextType::class,
-                ['attr' => ['placeholder' => 'Description', 'class' => 'form-control']])
+                ['attr' => ['placeholder' => 'app.product.description', 'class' => 'form-control'],
+                    'label' => 'app.product.description',
+                    ])
 
             ->add('category', EntityType::class, [
                 'class' => 'AppBundle:ProductCategory',
@@ -34,10 +40,11 @@ class ProductType extends AbstractType
                         ->orderBy('c.name', 'DESC');
                 },
                 'choice_label' => 'name',
-                'placeholder' => 'Choose a category',
-                'attr' => ['class' => 'form-control']
+                'placeholder' => 'app.product.chose_cat',
+                'attr' => ['class' => 'form-control'],
+                'label' => 'app.product.categories'
                 ])
-            ->add('save', SubmitType::class, ['label' => 'Submit', 'attr' => ['class' => 'btn btn-primary']])
+            ->add('save', SubmitType::class, ['label' => 'app.product.save', 'attr' => ['class' => 'btn btn-primary']])
         ->getForm();
 
 

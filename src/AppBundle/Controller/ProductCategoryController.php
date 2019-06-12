@@ -5,37 +5,23 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\ProductCategory;
 use AppBundle\Form\ProductCategoryType;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/categories")
- */
+
 class ProductCategoryController extends Controller
 {
-    /**
-     * @Route("/", name="show_category")
-     */
+
     public function showAction()
     {
         $categories = $this->getDoctrine()
             ->getRepository(ProductCategory::class)
             ->findAll();
-
-        if(!$categories)
-        {
-            throw $this->createNotFoundException(
-                'No product found'
-            );
-        }
         return $this->render('categories_products.html.twig', ['categories' => $categories]);
     }
 
-    /**
-     * @Route("/create", name="create_category")
-     */
+
     public function createAction(Request $request)
     {
         $category = new ProductCategory();
@@ -50,13 +36,10 @@ class ProductCategoryController extends Controller
             $this->addFlash('success', 'Product was created');
             return $this->redirectToRoute('show_category');
         }
-
         return $this->render('create_category.html.twig', ['form' => $form->createView()]);
     }
 
-    /**
-     * @Route("/edit/{id}", name="edit_category")
-     */
+
     public function updateAction(Request $request, ProductCategory $category)
     {
         $form = $this->createForm(ProductCategoryType::class, $category);
@@ -65,7 +48,6 @@ class ProductCategoryController extends Controller
         if($form->isSubmitted() && $form->isValid())
         {
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($category);
             $entityManager->flush();
             $this->addFlash('success', 'Product was updated');
             return $this->redirectToRoute('show_category');
@@ -75,9 +57,7 @@ class ProductCategoryController extends Controller
 
     }
 
-    /**
-     * @Route("/delete/{id}", name="delete_category")
-     */
+
     public function deleteAction(ProductCategory $category)
     {
         $entityManager = $this->getDoctrine()->getManager();
