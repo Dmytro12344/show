@@ -1,12 +1,31 @@
 app:
     resource: '@AppBundle/Controller/'
     type: annotation
+    prefix: /en
+
+
+home:
+    path: /
+    controller: AppBundle\Controller\HomeController:showAction
+    defaults:
+        path: /{%locale%}/
+        controller: AppBundle:Home:show
+        permanent: true
+
 
 homepage:
-    path: /
-    controller: AppBundle\Controller\HomeController:show
+    path: /{_locale}/
+    controller: AppBundle\Controller\HomeController:showAction
     requirements:
         _locale: en|fr|de|ru
+    defaults:
+        path: /{_locale}/
+        controller: AppBundle:Home:show
+        permanent: true
+        requirements:
+            _locale: en|fr|de|ru
+
+
 
 
 #Category
