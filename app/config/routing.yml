@@ -5,31 +5,43 @@ app:
 homepage:
     path: /
     controller: AppBundle\Controller\HomeController:show
+    requirements:
+        _locale: en|fr|de|ru
 
 
 #Category
 show_category:
-    path: /categories/
+    path: /{_locale}/categories/
     controller: AppBundle\Controller\ProductCategoryController:showAction
+    requirements:
+        _locale: en|fr|de|ru
 
 create_category:
-    path: /categories/create
+    path: /{_locale}/categories/create
     controller: AppBundle\Controller\ProductCategoryController:createAction
+    requirements:
+        _locale: en|fr|de|ru
 
 edit_category:
-    path: /categories/edit/{id}
+    path: /{_locale}/categories/edit/{id}
     controller: AppBundle\Controller\ProductCategoryController:updateAction
+    requirements:
+        _locale: en|fr|de|ru
 
 delete_category:
-    path: /categories/delete/{id}
+    path: /{_locale}/categories/delete/{id}
     controller: AppBundle\Controller\ProductCategoryController:deleteAction
+    requirements:
+        _locale: en|fr|de|ru
 
 
 
 #Product
 show_products:
-    path: /products/
+    path: /{_locale}/products/
     controller: AppBundle\Controller\ProductsController:showAction
+    requirements:
+        _locale: en|fr|de|ru
 
 create_product:
     path: /{_locale}/products/create
@@ -38,18 +50,24 @@ create_product:
         _locale: en|fr|de|ru
 
 edit_products:
-    path: /products/update/{id}
+    path: /{_locale}/products/update/{id}
     controller: AppBundle\Controller\ProductsController:editAction
+    requirements:
+        _locale: en|fr|de|ru
 
 delete_products:
-    path: /products/delete/{id}
+    path: /{_locale}/products/delete/{id}
     controller: AppBundle\Controller\ProductsController:deleteAction
+    requirements:
+        _locale: en|fr|de|ru
 
 
 
 #Count
 count_cost:
-    path: /count-cost
+    path: /{_locale}/count-cost
     controller: AppBundle\Controller\CountController:indexAction
+    requirements:
+        _locale: en|fr|de|ru
 
 

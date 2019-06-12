@@ -6,3 +6,37 @@ app.product.categories: 'Categories'
 app.product.save: 'Submit'
 app.product.chose_cat: 'Choose a category'
 
+#Form Category
+app.category.name: 'Name'
+app.category.save: 'Submit'
+
+#Main menu
+main_menu.name: 'Categories and Products'
+main_menu.home: 'Home'
+main_menu.category: 'Categories'
+main_menu.product: 'Products'
+main_menu.count_cost: 'Count'
+
+#Ctegory table
+category.table.name: 'Name'
+category.table.edit: 'Edit'
+category.table.delete: 'Delete'
+
+#Product table
+product.table.name: 'Name'
+product.table.price: 'Price'
+product.table.description: 'Description'
+product.table.category: 'Category'
+product.table.edit: 'Edit'
+product.table.delete: 'Delete'
+
+#Count Table
+count.table.name: 'Name'
+count.table.product_count: "Product's count"
+count.table.count_price: "Count price"
+
+#Buttons
+product.button.create: 'Create product'
+product.button.back_to_product: 'Back to list'
+category.button.back_to_cat: 'Back to list'
+category.button.create: 'Create category'

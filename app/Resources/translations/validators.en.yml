@@ -5,3 +5,6 @@ app.product.price.greater_null: 'Field Price must be greater than 0.'
 app.product.price.type_numeric: 'Field Price must be number.'
 app.product.category.notblank: 'Field Category must be required.'
 app.product.description.notblank: 'Field Description must be required.'
+
+#Assert Category
+app.category.name.not_blank: 'Field Name must be required'

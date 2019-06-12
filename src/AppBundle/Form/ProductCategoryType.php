@@ -20,10 +20,11 @@ class ProductCategoryType extends AbstractType
                     [
                         'attr' => [
                             'class' => 'form-control',
-                            'placeholder' => 'Name'
-                        ]
+                            'placeholder' => 'app.category.name'
+                        ],
+                        'label' => 'app.category.name'
                     ])
-                ->add('save', SubmitType::class, ['label' => 'Submit', 'attr' => ['class' => 'btn btn-primary']])
+                ->add('save', SubmitType::class, ['label' => 'app.category.save', 'attr' => ['class' => 'btn btn-primary']])
                 ->getForm();
 
 

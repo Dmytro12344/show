@@ -19,23 +19,23 @@
 <body>
 
 <nav  class="navbar navbar-expand-lg navbar-dark" style="background-color:#6c1e2e">
-    <a class="navbar-brand" href="{{ path('homepage') }}">Categories and Products</a>
+    <a class="navbar-brand" href="{{ path('homepage') }}">{{ 'main_menu.name' | trans }}</a>
     <div class="collapse navbar-collapse" id="navbar1">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="{{ path('homepage') }}">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{{ path('homepage') }}">{{ 'main_menu.home' | trans }}<span class="sr-only">(current)</span></a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="{{ path('show_products') }}">Products</a>
+                <a class="nav-link" href="{{ path('show_products') }}">{{ 'main_menu.product' | trans }}</a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="{{ path('show_category') }}">Category</a>
+                <a class="nav-link" href="{{ path('show_category') }}">{{ 'main_menu.category' | trans }}</a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="{{ path('count_cost') }}">Count</a>
+                <a class="nav-link" href="{{ path('count_cost') }}">{{ 'main_menu.count_cost' | trans }}</a>
             </li>
         </ul>
     </div>

@@ -5,3 +5,38 @@ app.product.description: 'Описание'
 app.product.categories: 'Категория'
 app.product.save: 'Отправить'
 app.product.chose_cat: 'Выберите категорию'
+
+#Form Category
+app.category.name: 'Название'
+app.category.save: 'Отправить'
+
+#Main menu
+main_menu.name: 'Категории и продукты'
+main_menu.home: 'Главная'
+main_menu.category: 'Категории'
+main_menu.product: 'Продукты'
+main_menu.count_cost: 'Количество'
+
+#Category table
+category.table.name: 'Название'
+category.table.edit: 'Редактировать'
+category.table.delete: 'Удалить'
+
+#Product table
+product.table.name: 'Название'
+product.table.price: 'Цена'
+product.table.description: 'Описание'
+product.table.category: 'Категория'
+product.table.edit: 'Редактировать'
+product.table.delete: 'Удалить'
+
+#Count Table
+count.table.name: 'Название'
+count.table.product_count: "Общее количество"
+count.table.count_price: "Общая стоимость"
+
+#Buttons
+product.button.create: 'Создать продукт'
+product.button.back_to_product: 'Назад к списку'
+category.button.back_to_cat: 'Назад к списку'
+category.button.create: 'Создать категорию'

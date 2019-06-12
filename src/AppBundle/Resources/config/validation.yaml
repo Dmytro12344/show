@@ -13,12 +13,12 @@ AppBundle\Entity\Product:
     - NotBlank: { message: 'app.product.price.not_blank'}
 
     description:
-    - NotBlank: { message: 'Field description must required.'}
+    - NotBlank: { message: 'app.product.description.not_blank.'}
 
     category:
-    - NotBlank: { message: 'Field category must be required.'}
+    - NotBlank: { message: 'app.product.category.not_blank.'}
 
 AppBundle\Entity\ProductCategory:
   properties:
     name:
-      - NotBlank: { message: 'Field name must be required.'}
+      - NotBlank: { message: 'app.category.name.not_blank'}
