@@ -10,6 +10,16 @@ app.product.chose_cat: 'Выберите категорию'
 app.category.name: 'Название'
 app.category.save: 'Отправить'
 
+#Form CRUD Product
+app.product.created.success: 'Продукт успешно добавлен.'
+app.product.updated.success: 'Продукт успешно обновлен.'
+app.product.deleted.success: 'Продукт успешно удален.'
+
+#Form CRUD Category
+app.category.created.success: 'Категория успешно добавлена.'
+app.category.updated.success: 'Категория успешно обновлена.'
+app.category.deleted.success: 'Категория успешно удалена.'
+
 #Main menu
 main_menu.name: 'Категории и продукты'
 main_menu.home: 'Главная'
@@ -40,3 +50,5 @@ product.button.create: 'Создать продукт'
 product.button.back_to_product: 'Назад к списку'
 category.button.back_to_cat: 'Назад к списку'
 category.button.create: 'Создать категорию'
+
+

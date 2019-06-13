@@ -9,3 +9,4 @@ app.product.description.not_blank: 'Поле Описание обязатель
 #Assert Category
 app.category.name.not_blank: 'Поле Имя обязательно к заполнению.'
 
+

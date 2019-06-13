@@ -39,7 +39,7 @@ class ProductsController extends Controller
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($product);
             $entityManager->flush();
-            $this->addFlash('success', 'Product was created');
+            $this->addFlash('success', 'app.product.created.success');
             return $this->redirectToRoute('show_products');
         }
 
@@ -54,7 +54,7 @@ class ProductsController extends Controller
         if($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->flush();
-            $this->addFlash('success', 'Product was updates');
+            $this->addFlash('success', 'app.product.updated.success');
             return $this->redirectToRoute('show_products');
         }
         return $this->render('create_product.html.twig', ['form' => $form->createView()]);
@@ -66,7 +66,7 @@ class ProductsController extends Controller
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->remove($product);
         $entityManager->flush();
-        $this->addFlash('success', 'Product was deleted');
+        $this->addFlash('success', 'app.product.deleted.success');
         return $this->redirectToRoute('show_products');
     }
 }

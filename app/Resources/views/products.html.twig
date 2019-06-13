@@ -5,13 +5,13 @@
     <div class="container">
 {% for message in app.flashes('success') %}
     <div class="flash-notice">
-        {{ message }}
+        {{ message|trans}}
     </div>
 {% endfor %}
 
 {% for message in app.flashes('error') %}
     <div class="flash-notice">
-        {{ message }}
+        {{ message|trans }}
     </div>
 {% endfor %}
 

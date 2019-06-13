@@ -30,7 +30,7 @@ class ProductCategoryController extends Controller
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($category);
             $entityManager->flush();
-            $this->addFlash('success', 'Product was created');
+            $this->addFlash('success', 'app.category.created.success');
             return $this->redirectToRoute('show_category');
         }
         return $this->render('create_category.html.twig', ['form' => $form->createView()]);
@@ -46,7 +46,7 @@ class ProductCategoryController extends Controller
         {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->flush();
-            $this->addFlash('success', 'Product was updated');
+            $this->addFlash('success', 'app.category.updated.success');
             return $this->redirectToRoute('show_category');
         }
 
@@ -60,9 +60,7 @@ class ProductCategoryController extends Controller
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->remove($category);
         $entityManager->flush();
-        $this->addFlash('success', 'Category was deleted');
-        $this->addFlash('error', 'Current category does not found');
-
+        $this->addFlash('success', 'app.category.deleted.success');
         return $this->redirectToRoute('show_category');
     }
 }

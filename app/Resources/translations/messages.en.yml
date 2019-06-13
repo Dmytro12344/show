@@ -10,6 +10,16 @@ app.product.chose_cat: 'Choose a category'
 app.category.name: 'Name'
 app.category.save: 'Submit'
 
+#Form CRUD Product
+app.product.created.success: 'Product successfully added.'
+app.product.updated.success: 'Product successfully updated.'
+app.product.deleted.success: 'Product successfully deleted.'
+
+#Form CRUD Category
+app.category.created.success: 'Category successfully added.'
+app.category.updated.success: 'Category successfully updated.'
+app.category.deleted.success: 'Category successfully deleted.'
+
 #Main menu
 main_menu.name: 'Categories and Products'
 main_menu.home: 'Home'
