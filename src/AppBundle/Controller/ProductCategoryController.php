@@ -7,8 +7,6 @@ use AppBundle\Entity\ProductCategory;
 use AppBundle\Form\ProductCategoryType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Routing\Annotation\Route;
-
 
 class ProductCategoryController extends Controller
 {
@@ -20,7 +18,6 @@ class ProductCategoryController extends Controller
             ->findAll();
         return $this->render('categories_products.html.twig', ['categories' => $categories]);
     }
-
 
     public function createAction(Request $request)
     {

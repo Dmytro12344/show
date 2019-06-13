@@ -6,7 +6,6 @@ namespace AppBundle\Controller;
 use AppBundle\Form\ProductType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Routing\Annotation\Route;
 use AppBundle\Entity\Product;
 
 
@@ -15,8 +14,8 @@ class ProductsController extends Controller
     public function showAction(Request $request)
     {
         $product = $this->getDoctrine()
-                        ->getRepository(Product::class)
-                        ->findAll();
+            ->getRepository(Product::class)
+            ->findAll();
 
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
@@ -28,9 +27,6 @@ class ProductsController extends Controller
         return $this->render('products.html.twig', ['products' => $pagination]);
     }
 
-    /**
-     * @Route("/create", name="create_product")
-     */
     public function createAction(Request $request)
     {
         $product = new Product();
@@ -38,7 +34,8 @@ class ProductsController extends Controller
 
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid())
+        {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($product);
             $entityManager->flush();
@@ -49,9 +46,6 @@ class ProductsController extends Controller
         return $this->render('create_product.html.twig', ['form' => $form->createView()]);
     }
 
-    /**
-     * @Route("/edit/{id}", name="edit_product")
-     */
     public function updateAction(request $request, Product $product)
     {
         $form = $this->createForm(ProductType::class, $product);
@@ -67,9 +61,6 @@ class ProductsController extends Controller
     }
 
 
-    /**
-     * @Route("/delete/{id}", name="delete_product")
-     */
     public function deleteAction(Product $product)
     {
         $entityManager = $this->getDoctrine()->getManager();

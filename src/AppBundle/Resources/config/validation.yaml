@@ -11,6 +11,7 @@ AppBundle\Entity\Product:
         type: numeric
         message: 'app.product.price.type_numeric'
     - NotBlank: { message: 'app.product.price.not_blank'}
+    - AppBundle\Validator\Constraints\ContainsNotEqual_100: ~
 
     description:
     - NotBlank: { message: 'app.product.description.not_blank.'}

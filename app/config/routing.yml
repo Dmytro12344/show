@@ -3,7 +3,7 @@ app:
     type: annotation
     prefix: /en
 
-
+#Home
 home:
     path: /
     controller: AppBundle\Controller\HomeController:showAction
@@ -24,8 +24,6 @@ homepage:
         permanent: true
         requirements:
             _locale: en|fr|de|ru
-
-
 
 
 #Category
@@ -68,13 +66,13 @@ create_product:
     requirements:
         _locale: en|fr|de|ru
 
-edit_products:
+edit_product:
     path: /{_locale}/products/update/{id}
     controller: AppBundle\Controller\ProductsController:editAction
     requirements:
         _locale: en|fr|de|ru
 
-delete_products:
+delete_product:
     path: /{_locale}/products/delete/{id}
     controller: AppBundle\Controller\ProductsController:deleteAction
     requirements:
