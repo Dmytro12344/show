@@ -39,6 +39,13 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ path('count_cost') }}">{{ 'main_menu.count_cost' | trans }}</a>
             </li>
+            <li>
+            {% if app.user.username is defined %}
+                    <a href="{{ path('user_logout') }}">{{ 'main_menu.logout' | trans }}</a>
+                {% else %}
+                    <a href="{{ path('login') }}">{{ 'main_menu.login' | trans }}</a>
+            {% endif %}
+            </li>
         </ul>
     </div>
 </nav>

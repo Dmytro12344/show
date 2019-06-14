@@ -3,6 +3,9 @@ app:
     type: annotation
     prefix: /en
 
+user_logout:
+    path: /logout
+
 #Admin
 admin_page:
     path: /admin
