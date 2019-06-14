@@ -22,6 +22,8 @@
     "require": {
         "php": "^7.2",
         "doctrine/doctrine-bundle": "^1.6",
+        "doctrine/doctrine-migrations-bundle": "^2.0",
+        "doctrine/migrations": "^2.1",
         "doctrine/orm": "^2.5",
         "incenteev/composer-parameter-handler": "^2.0",
         "knplabs/knp-markdown-bundle": "^1.7",
@@ -38,6 +40,7 @@
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^3.1",
         "sensio/generator-bundle": "^3.0",
+        "symfony/maker-bundle": "^1.11",
         "symfony/phpunit-bridge": "^3.0"
     },
     "scripts": {

@@ -3,6 +3,18 @@ app:
     type: annotation
     prefix: /en
 
+#Admin
+admin_page:
+    path: /admin
+    controller: AppBundle\Controller\DefaultController:indexAction
+
+login:
+    path:     /login
+    controller: AppBundle:Security:login
+
+
+
+
 #Home
 home:
     path: /
