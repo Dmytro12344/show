@@ -23,3 +23,19 @@ AppBundle\Entity\ProductCategory:
   properties:
     name:
       - NotBlank: { message: 'app.category.name.not_blank'}
+
+AppBundle\Entity\User:
+  properties:
+    username:
+      - NotBlank: { message: 'app.user.username.not_blank'}
+    email:
+      - NotBlank: { message: 'app.user.email.not_blank'}
+      - Email: { message: 'app.user.email.inc_email'}
+    plainPassword:
+      - NotBlank: { message: 'app.user.plaint_pass.not_blank'}
+      - Length:
+          max: 4096
+          min: 6
+          minMessage: 'app.user.plain_pass.min_length'
+          maxMessage: 'app.user.plain_pass.max_length'
+

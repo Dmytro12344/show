@@ -9,4 +9,14 @@ app.product.description.not_blank: 'Поле Описание обязатель
 #Assert Category
 app.category.name.not_blank: 'Поле Имя обязательно к заполнению.'
 
+#Assert Registration User
+app.user.username.not_blank: 'Поля UserName обязательно к заполнению.'
+app.user.email.not_blank: 'Поля Email обязательно к заполнению.'
+app.user.email.inc_email: 'Неверный формат поля Email.'
+app.user.plaint_pass.not_blank: 'Неверный пароль.'
+app.user.plain_pass.max_length: 'Поле Password не должно превышать 4096 символов.'
+app.user.plain_pass.min_length: 'Пароль должен состоять минимум из 6 символов.'
+
+
+
 

@@ -13,7 +13,12 @@ login:
     controller: AppBundle:Security:login
 
 
-
+#Registaration
+register:
+    path: /{_locale}/register
+    controller: AppBundle\Controller\RegistrationController:registerAction
+    requirements:
+        _locale: en|fr|de|ru
 
 #Home
 home:

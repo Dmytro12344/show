@@ -8,3 +8,11 @@ app.product.description.notblank: 'Field Description must be required.'
 
 #Assert Category
 app.category.name.not_blank: 'Field Name must be required'
+
+#Assert Registration User
+app.user.username.not_blank: 'Field UserName must be required.'
+app.user.email.not_blankc: 'Field Email must be required.'
+app.user.email.inc_email: 'Incorrect Email format.'
+app.user.plaint_pass.not_blank: 'Field Field Password must be required must be required'
+app.user.plain_pass.max_length: 'Field Password must be less than 4096 symbols.'
+app.user.plain_pass.min_length: 'Field Password must be greater than 6 symbols.'

@@ -30,26 +30,27 @@ class User implements UserInterface
      */
     private $password;
 
+    private $plainPassword;
+
     /**
      *@ORM\Column(type="string", length=255, unique=true)
      */
     private $email;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="array")
      */
     private $roles;
+
+    public function __construct()
+    {
+        $this->roles = ['ROLE_USER'];
+    }
 
 
     public function getRoles()
     {
         return (array)$this->roles;
-    }
-
-
-    public function setRoles($roles): void
-    {
-        $this->roles = $roles;
     }
 
 
@@ -114,5 +115,17 @@ class User implements UserInterface
     public function setId($id): void
     {
         $this->id = $id;
+    }
+
+
+    public function getPlainPassword()
+    {
+        return $this->plainPassword;
+    }
+
+
+    public function setPlainPassword($plainPassword): void
+    {
+        $this->plainPassword = $plainPassword;
     }
 }
