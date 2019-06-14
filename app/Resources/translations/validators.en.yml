@@ -16,3 +16,6 @@ app.user.email.inc_email: 'Incorrect Email format.'
 app.user.plaint_pass.not_blank: 'Field Field Password must be required must be required'
 app.user.plain_pass.max_length: 'Field Password must be less than 4096 symbols.'
 app.user.plain_pass.min_length: 'Field Password must be greater than 6 symbols.'
+
+#Form User Registration
+app.user.invalid_password: 'Incorrect password'

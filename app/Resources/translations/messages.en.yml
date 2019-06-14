@@ -10,6 +10,12 @@ app.product.chose_cat: 'Choose a category'
 app.category.name: 'Name'
 app.category.save: 'Submit'
 
+#Form User Register
+app.user.username: 'Username'
+app.user.email: 'Email'
+app.user.first_password: 'Password'
+app.user.second_password: 'Confirm password'
+
 #Form CRUD Product
 app.product.created.success: 'Product successfully added.'
 app.product.updated.success: 'Product successfully updated.'
@@ -50,3 +56,4 @@ product.button.create: 'Create product'
 product.button.back_to_product: 'Back to list'
 category.button.back_to_cat: 'Back to list'
 category.button.create: 'Create category'
+

@@ -10,6 +10,12 @@ app.product.chose_cat: 'Выберите категорию'
 app.category.name: 'Название'
 app.category.save: 'Отправить'
 
+#Form User Register
+app.user.username: 'Имя'
+app.user.email: 'Почта'
+app.user.first_password: 'Пароль'
+app.user.second_password: 'Повторный пароль'
+
 #Form CRUD Product
 app.product.created.success: 'Продукт успешно добавлен.'
 app.product.updated.success: 'Продукт успешно обновлен.'
