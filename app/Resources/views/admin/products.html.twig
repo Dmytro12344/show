@@ -33,8 +33,13 @@
             <td>{{ product.price }}</td>
             <td>{{ product.description }}</td>
             <td>{{ product.category.name }}</td>
-            <td><a href="{{ path('edit_product', {'id' : product.id}) }}" class="btn btn-primary">{{ 'product.table.edit'|trans }}</a></td>
-            <td><a href="{{ path('delete_product', {'id' : product.id}) }}" class="btn btn-danger">{{ 'product.table.delete'|trans }}</a></td>
+            {% if is_granted("ROLE_GLOBAL_ADMIN") == true %}
+                <td><a href="{{ path('edit_product', {'id' : product.id}) }}" class="btn btn-primary">{{ 'product.table.edit'|trans }}</a></td>
+                <td><a href="{{ path('delete_product', {'id' : product.id}) }}" class="btn btn-danger">{{ 'product.table.delete'|trans }}</a></td>
+            {% else %}
+                <td><a href="#" class="btn btn-danger">{{ 'product.table.edit'|trans }}</a></td>
+                <td><a href="#" class="btn btn-danger">{{ 'product.table.delete'|trans }}</a></td>
+            {% endif %}
         </tr>
     {% endfor %}
     </tbody>
