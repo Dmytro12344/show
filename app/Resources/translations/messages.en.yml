@@ -32,6 +32,8 @@ main_menu.home: 'Home'
 main_menu.category: 'Categories'
 main_menu.product: 'Products'
 main_menu.count_cost: 'Count'
+main_menu.login: 'Login'
+main_menu.logout: 'Logout'
 
 #Ctegory table
 category.table.name: 'Name'

@@ -45,6 +45,13 @@ class Product
     private $category;
 
     /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="product")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=true, unique=false)
+     */
+    private $user;
+
+
+    /**
      * @return Collection|ProductCategory[]
      */
     public function getCategory()
@@ -86,6 +93,18 @@ class Product
     public function setPrice($price)
     {
         $this->price = $price;
+    }
+
+
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+
+    public function setUser($user): void
+    {
+        $this->user = $user;
     }
 
 

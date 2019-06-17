@@ -6,10 +6,72 @@ app:
 user_logout:
     path: /logout
 
-#Admin
+#Admin ---------------------------------------------------------------------
 admin_page:
     path: /admin
-    controller: AppBundle\Controller\DefaultController:indexAction
+    controller: AppBundle\Controller\Admin\IndexController:indexAction
+
+count_cost:
+    path: /{_locale}/admin/count-cost
+    controller: AppBundle\Controller\Admin\CountController:indexAction
+    requirements:
+        _locale: en|fr|de|ru
+
+#PRODUCTS
+show_admin_products:
+    path: /{_locale}/admin/products
+    controller: AppBundle\Controller\Admin\ProductsController:showAction
+    requirements:
+        _locale: en|fr|de|ru
+
+create_product:
+    path: /{_locale}/admin/products/create
+    controller: AppBundle\Controller\Admin\ProductsController:createAction
+    requirements:
+        _locale: en|fr|de|ru
+
+edit_product:
+    path: /{_locale}/admin/products/update/{id}
+    controller: AppBundle\Controller\Admin\ProductsController:editAction
+    requirements:
+        _locale: en|fr|de|ru
+
+delete_product:
+    path: /{_locale}/admin/products/delete/{id}
+    controller: AppBundle\Controller\Admin\ProductsController:deleteAction
+    requirements:
+        _locale: en|fr|de|ru
+
+#CATEGORY
+show_admin_category:
+    path: /{_locale}/admin/categories
+    controller: AppBundle\Controller\Admin\ProductCategoryController:showAction
+    requirements:
+        _locale: en|fr|de|ru
+
+create_category:
+    path: /{_locale}/admin/categories/create
+    controller: AppBundle\Controller\Admin\ProductCategoryController:createAction
+    requirements:
+        _locale: en|fr|de|ru
+
+edit_category:
+    path: /{_locale}/admin/categories/edit/{id}
+    controller: AppBundle\Controller\Admin\ProductCategoryController:updateAction
+    requirements:
+        _locale: en|fr|de|ru
+
+delete_category:
+    path: /{_locale}/admin/categories/delete/{id}
+    controller: AppBundle\Controller\Admin\ProductCategoryController:deleteAction
+    requirements:
+        _locale: en|fr|de|ru
+
+
+
+
+
+#END ADMIN -------------------------------------------------------------------
 
 login:
     path:     /login
@@ -34,7 +96,7 @@ home:
 
 
 homepage:
-    path: /{_locale}/
+    path: /{_locale}
     controller: AppBundle\Controller\HomeController:showAction
     requirements:
         _locale: en|fr|de|ru
@@ -48,63 +110,18 @@ homepage:
 
 #Category
 show_category:
-    path: /{_locale}/categories/
+    path: /{_locale}/categories
     controller: AppBundle\Controller\ProductCategoryController:showAction
     requirements:
         _locale: en|fr|de|ru
 
-create_category:
-    path: /{_locale}/categories/create
-    controller: AppBundle\Controller\ProductCategoryController:createAction
-    requirements:
-        _locale: en|fr|de|ru
-
-edit_category:
-    path: /{_locale}/categories/edit/{id}
-    controller: AppBundle\Controller\ProductCategoryController:updateAction
-    requirements:
-        _locale: en|fr|de|ru
-
-delete_category:
-    path: /{_locale}/categories/delete/{id}
-    controller: AppBundle\Controller\ProductCategoryController:deleteAction
-    requirements:
-        _locale: en|fr|de|ru
-
-
-
 #Product
 show_products:
-    path: /{_locale}/products/
+    path: /{_locale}/products
     controller: AppBundle\Controller\ProductsController:showAction
     requirements:
         _locale: en|fr|de|ru
 
-create_product:
-    path: /{_locale}/products/create
-    controller: AppBundle\Controller\ProductsController:createAction
-    requirements:
-        _locale: en|fr|de|ru
 
-edit_product:
-    path: /{_locale}/products/update/{id}
-    controller: AppBundle\Controller\ProductsController:editAction
-    requirements:
-        _locale: en|fr|de|ru
-
-delete_product:
-    path: /{_locale}/products/delete/{id}
-    controller: AppBundle\Controller\ProductsController:deleteAction
-    requirements:
-        _locale: en|fr|de|ru
-
-
-
-#Count
-count_cost:
-    path: /{_locale}/count-cost
-    controller: AppBundle\Controller\CountController:indexAction
-    requirements:
-        _locale: en|fr|de|ru
 
 
