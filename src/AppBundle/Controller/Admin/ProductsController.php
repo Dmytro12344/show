@@ -28,9 +28,7 @@ class ProductsController extends Controller
     public function createAction(Request $request)
     {
         $product = new Product();
-        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         $form = $this->createForm(ProductType::class, $product);
-
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid())
@@ -48,9 +46,8 @@ class ProductsController extends Controller
 
     public function editAction(request $request, Product $product)
     {
-        if (false === $this->get('security.authorization_checker')->isGranted('edit', $product)) {
-            throw $this->createAccessDeniedException('Unable to access this page!');
-        }
+        $this->denyAccessUnlessGranted('edit', $product);
+
         $form = $this->createForm(ProductType::class, $product);
         $form->handleRequest($request);
 
@@ -66,9 +63,8 @@ class ProductsController extends Controller
 
     public function deleteAction(Product $product)
     {
-        if (false === $this->get('security.authorization_checker')->isGranted('edit', $product)) {
-            throw $this->createAccessDeniedException('Unable to access this page!');
-        }
+        $this->denyAccessUnlessGranted('edit', $product);
+
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->remove($product);
         $entityManager->flush();

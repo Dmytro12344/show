@@ -42,34 +42,34 @@ class ProductVoter extends Voter
             return false;
         }
 
-        if ($this->decisionManager->decide($token, array('ROLE_GLOBAL_ADMIN'))) {
-            return true;
-        }
-
         /** @var Product $product */
         $product = $subject;
 
         switch ($attribute) {
             case self::VIEW:
-                return $this->canView($product, $user);
+                return $this->canView($product, $user, $token);
             case self::EDIT:
-                return $this->canEdit($product, $user);
+                return $this->canEdit($product, $user, $token);
         }
 
         throw new \LogicException('This code should not be reached!');
     }
 
-    private function canView(Product $product, User $user)
+    private function canView(Product $product, User $user, TokenInterface $token)
     {
-        if ($this->canEdit($product, $user)) {
+        if ($this->canEdit($product, $user, $token)) {
             return true;
         }
 
         return $user === $product->getUser();
     }
 
-    private function canEdit(Product $product, User $user)
+    private function canEdit(Product $product, User $user, TokenInterface $token)
     {
+        if ($this->decisionManager->decide($token, array('ROLE_GLOBAL_ADMIN'))) {
+            return true;
+        }
+
         return $user === $product->getUser();
     }
 
