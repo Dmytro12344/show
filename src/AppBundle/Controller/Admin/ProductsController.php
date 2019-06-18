@@ -3,7 +3,6 @@
 namespace AppBundle\Controller\Admin;
 
 use AppBundle\Entity\Product;
-use AppBundle\Entity\User;
 use AppBundle\Form\ProductType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -49,6 +48,9 @@ class ProductsController extends Controller
 
     public function editAction(request $request, Product $product)
     {
+        if (false === $this->get('security.authorization_checker')->isGranted('edit', $product)) {
+            throw $this->createAccessDeniedException('Unable to access this page!');
+        }
         $form = $this->createForm(ProductType::class, $product);
         $form->handleRequest($request);
 
@@ -64,6 +66,9 @@ class ProductsController extends Controller
 
     public function deleteAction(Product $product)
     {
+        if (false === $this->get('security.authorization_checker')->isGranted('edit', $product)) {
+            throw $this->createAccessDeniedException('Unable to access this page!');
+        }
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->remove($product);
         $entityManager->flush();

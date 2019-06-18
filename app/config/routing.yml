@@ -8,8 +8,10 @@ user_logout:
 
 #Admin ---------------------------------------------------------------------
 admin_page:
-    path: /admin
+    path: /{_locale}/admin
     controller: AppBundle\Controller\Admin\IndexController:indexAction
+    requirements:
+        _locale: en|fr|de|ru
 
 count_cost:
     path: /{_locale}/admin/count-cost
