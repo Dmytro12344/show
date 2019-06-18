@@ -1,8 +1,9 @@
 security:
 
     role_hierarchy:
-        ROLE_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
         ROLE_USER: ROLE_USER
+        ROLE_ADMIN: [ROLE_USER]
+        ROLE_GLOBAL_ADMIN: [ROLE_ADMIN]
 
     encoders:
         AppBundle\Entity\User:
@@ -31,13 +32,14 @@ security:
 
 
     access_control:
-        # потребовать ROLE_ADMIN для /admin*
         - { path: ^/admin, roles: ROLE_ADMIN }
-        - { path: ^/.*/products/create, roles: [ROLE_ADMIN, ROLE_USER] }
-        - { path: ^/.*/products/edit, roles: [ROLE_ADMIN, ROLE_USER] }
-        - { path: ^/.*/products/delete, roles: [ROLE_ADMIN, ROLE_USER] }
-        - { path: ^/.*/categories/create, roles: [ROLE_ADMIN, ROLE_USER] }
-        - { path: ^/.*/categories/edit, roles: [ROLE_ADMIN, ROLE_USER] }
-        - { path: ^/.*/categories/delete, roles: [ROLE_ADMIN, ROLE_USER] }
-        - { path: ^/.*/count-cost, roles: [ROLE_ADMIN] }
+        - { path: ^/.*/admin/products, roles: ROLE_ADMIN }
+        - { path: ^/.*/admin/products/create, roles: ROLE_ADMIN }
+        - { path: ^/.*/admin/products/edit, roles: ROLE_ADMIN }
+        - { path: ^/.*/admin/products/delete, roles: ROLE_ADMIN }
+        - { path: ^/.*/admin/categories, roles: ROLE_ADMIN }
+        - { path: ^/.*/admin/categories/create, roles: ROLE_ADMIN }
+        - { path: ^/.*/admin/categories/edit, roles: ROLE_ADMIN }
+        - { path: ^/.*/admin/categories/delete, roles: ROLE_ADMIN }
+        - { path: ^/.*/admin/count-cost, roles: ROLE_ADMIN }
 

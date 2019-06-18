@@ -26,47 +26,4 @@ class ProductsController extends Controller
 
         return $this->render('products.html.twig', ['products' => $pagination]);
     }
-
-    public function createAction(Request $request)
-    {
-        $product = new Product();
-        $form = $this->createForm(ProductType::class, $product);
-
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid())
-        {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($product);
-            $entityManager->flush();
-            $this->addFlash('success', 'app.product.created.success');
-            return $this->redirectToRoute('show_products');
-        }
-
-        return $this->render('create_product.html.twig', ['form' => $form->createView()]);
-    }
-
-    public function updateAction(request $request, Product $product)
-    {
-        $form = $this->createForm(ProductType::class, $product);
-        $form->handleRequest($request);
-
-        if($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->flush();
-            $this->addFlash('success', 'app.product.updated.success');
-            return $this->redirectToRoute('show_products');
-        }
-        return $this->render('create_product.html.twig', ['form' => $form->createView()]);
-    }
-
-
-    public function deleteAction(Product $product)
-    {
-        $entityManager = $this->getDoctrine()->getManager();
-        $entityManager->remove($product);
-        $entityManager->flush();
-        $this->addFlash('success', 'app.product.deleted.success');
-        return $this->redirectToRoute('show_products');
-    }
 }

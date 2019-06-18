@@ -1,12 +1,10 @@
 <?php
 
 namespace AppBundle\Entity;
-
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * @ORM\Entity
  * @ORM\Table(name="users")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\UserRepository")
  */
@@ -38,13 +36,35 @@ class User implements UserInterface
     private $email;
 
     /**
-     * @ORM\Column(type="array")
+     * @ORM\Column(type="string")
      */
     private $roles;
 
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Product", mappedBy="user")
+     */
+    private $product;
+
+
     public function __construct()
     {
-        $this->roles = ['ROLE_USER'];
+        $this->roles = 'ROLE_USER';
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getProduct()
+    {
+        return $this->product;
+    }
+
+    /**
+     * @param mixed $product
+     */
+    public function setProduct($product): void
+    {
+        $this->product = $product;
     }
 
 
@@ -100,6 +120,7 @@ class User implements UserInterface
     {
         return $this->email;
     }
+
 
     public function getSalt()
     {

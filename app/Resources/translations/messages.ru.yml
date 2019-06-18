@@ -32,6 +32,8 @@ main_menu.home: 'Главная'
 main_menu.category: 'Категории'
 main_menu.product: 'Продукты'
 main_menu.count_cost: 'Количество'
+main_menu.login: 'Вход'
+main_menu.logout: 'Выход'
 
 #Category table
 category.table.name: 'Название'
